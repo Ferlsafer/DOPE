@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dope</title>
+</head>
+<body>
+    <h1>Home </h1>
+
+    <div>
+        <form action="{% url 'add_category' %}" method="post">
+            {% csrf_token %}
+            <label for="first">Category</label>
+            <input type="text" name="name" id="fisrt" required>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div>
+        <br>
+        <h2>Category List</h2>
+        <table>
+            <thead>
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Created Date</th>
+
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td> {{ forloop.counter}} </td>
+                    <td> {{ category.name }} </td>
+                    <td> {{ category.created_at }} </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
