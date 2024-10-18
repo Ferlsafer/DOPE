@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--Register-->
+<div class="card"></div>
+    <div class="card-header">
+        <h5 class="card-title">Signup</h5>
+    </div>
+    <div class="card-body"> 
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="first">First Name</label>
+                        <input class="form-control rounded-0" type="text" name="firstName" id="fisrt" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="first">Last Name</label>
+                        <input class="form-control rounded-0" type="text" name="lastName" id="fisrt" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="first">Email</label>
+                        <input class="form-control rounded-0" type="text" name="email" id="fisrt" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="first">Username</label>
+                        <input class="form-control rounded-0" type="text" name="username" id="fisrt" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="first">Password</label>
+                        <input class="form-control rounded-0" type="password" name="password" id="fisrt" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="first">Phone Number</label>
+                        <input class="form-control rounded-0" type="tel" name="phone" id="fisrt" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="first">Address</label>
+                        <textarea name="address" class="form-control rounded-0" id="" required></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+           
+            <button class="btn btn-warning btn-sm rounded-0" type="submit">Signup</button>
+        </form>
+    </div>
+   </div>
+
+   <div class="container">
+    <h5>Foreign Key Example</h5>
+    <form action="{% url 'demo_save' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+
+            <select class="form-control" name="cat" id="">
+                <option value="">Select Category</option>
+                {% for cat in cats %}
+                <option value="{{cat.id}}"> {{cat.name}} </option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <button class="btn btn-warning btn-sm rounded-0" type="submit">Save</button>
+    </form>
+   </div>
+{% endblock %}
