@@ -1,8 +1,28 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.decorators import login_required
+
 from app.models import *
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        return redirect('user_signup')
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('user_signup')
+
 # Create your views here.
+@login_required(login_url='user_signup')
 def home(request):
     categories = Category.objects.all().order_by('-id')
     return render(request, 'category/index.html', {'categories': categories})
