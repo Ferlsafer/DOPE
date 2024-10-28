@@ -8,6 +8,7 @@
         <table class="table table-bordered">
             <thead>
                 <th>S/N</th>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Created Date</th>
                 <th>Actions</th>
@@ -17,6 +18,11 @@
                 {% for category in categories %}
                 <tr>
                     <td> {{ forloop.counter}} </td>
+                    <td> 
+                     {% if category.image%}
+                     <img width="50" height="50" src="{{category.image.url}}" alt=""> 
+                     {% endif %}
+                    </td>
                     <td> {{ category.name }} </td>
                     <td> {{ category.created_at|date:'d-m-Y' }} </td>
                     <td>

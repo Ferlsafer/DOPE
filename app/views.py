@@ -31,7 +31,8 @@ def add_category(request):
     try:
         if request.method == 'POST':
             name = request.POST['name']
-            Category.objects.create(name=name)
+            image = request.FILES['image']
+            Category.objects.create(name=name, image=image)
             messages.success(request, "Category added successfuly")
             return redirect('home')
     except Exception as e:

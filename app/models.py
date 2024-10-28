@@ -10,6 +10,7 @@ class Profile(models.Model):
     address = models.TextField()
 class Category(models.Model):
     name = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='categories/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
